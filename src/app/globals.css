@@ -1,27 +1,57 @@
+@import url("../styles/index.css");
+@import url("../styles/embla.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: 'floki';
+  src: url('../../public/fonts/Flokison-WyEXv.otf') format('otf'),
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@font-face {
+  font-family: 'azonix';
+  src: url('../../public/fonts/Azonix.otf') format('otf'),
+}
+
+body{
+  font-family: 'floki', sans-serif;
+}
+
+.container {
+  width: 1280px;
+  margin: 0 auto; 
+  padding: 0 16px;
+}
+
+
+@media (max-width: 1279px) and (min-width: 1024px) {
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 16px;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@media (max-width: 1023px) and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+
+.hero-1{
+  font-family: 'azonix', sans-serif;
+}
+
+.page-footer{
+  background: linear-gradient(89.7deg, rgb(0, 32, 95) 2.8%, rgb(132, 53, 142) 97.8%);
 }
