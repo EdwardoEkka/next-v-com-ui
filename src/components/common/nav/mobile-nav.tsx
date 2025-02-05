@@ -1,31 +1,76 @@
-import { GiMuscleUp } from "react-icons/gi";
-import { GiHamburgerMenu } from "react-icons/gi";
+import React, { useState } from "react";
+import { GiMuscleUp, GiHamburgerMenu } from "react-icons/gi";
+import { IoClose } from "react-icons/io5";
+import { useRouter } from "next/navigation";
 
 export function MobileNav() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
   return (
-    <div className="w-full nav-container h-20 flex justify-between px-4">
-    <div className="flex w-full h-full items-center justify-between">
-    <div className="flex items-center justify-center bg-orange-500 text-white aspect-square rounded-full h-[40px]"><GiMuscleUp/></div>
-    <div className="flex items-center justify-center  text-yellow-300 aspect-square rounded-full h-[40px] text-xl"><GiHamburgerMenu/></div>
-    </div>
-     
+    <div className="relative">
+      {/* Navbar */}
+      <div className="w-full h-20 flex justify-between px-6 md:hidden items-center">
+        <div className="flex items-center justify-center bg-gradient-to-r from-orange-500 to-pink-500 text-white aspect-square rounded-full h-[45px] shadow-lg">
+          <GiMuscleUp size={24} />
+        </div>
+        <button
+          className="flex items-center justify-center text-white aspect-square rounded-full h-[45px] text-2xl bg-gray-900 shadow-lg"
+          onClick={toggleMenu}
+        >
+          <GiHamburgerMenu />
+        </button>
+      </div>
+
+      {/* Slide-in Menu */}
+      <div
+        className={`fixed top-0 left-0 h-full bg-gray-900/80 backdrop-blur-lg text-white z-50 w-[75%] shadow-xl ${isMenuOpen ? "block" : "hidden"}`}
+      >
+        <div className="p-6 flex flex-col h-full">
+          <div className="flex justify-between items-center mb-6">
+            <div
+              onClick={() => {
+                router.push("/");
+              }}
+              className="cursor-pointer flex items-center justify-center bg-gradient-to-r from-orange-500 to-pink-500 text-white aspect-square rounded-full h-[45px] shadow-md"
+            >
+              <GiMuscleUp size={24} />
+            </div>
+            <button onClick={toggleMenu} className="text-2xl">
+              <IoClose />
+            </button>
+          </div>
+          <ul className="space-y-6 text-lg font-medium tracking-wide list-none">
+            {["COACHES", "STORE", "ABOUT", "BLOG"].map((item, index) => (
+              <li
+                key={index}
+                onClick={() => {
+                  router.push(`/${item.toLowerCase().replace(" ", "-")}`);
+                  toggleMenu();
+                }}
+                className="cursor-pointer transition-all hover:text-orange-400 hover:scale-105"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-auto flex justify-center text-sm opacity-60">
+            &copy; {new Date().getFullYear()} All Rights Reserved
+          </div>
+        </div>
+      </div>
+
+      {/* Overlay */}
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={toggleMenu}
+        ></div>
+      )}
     </div>
   );
 }
-
-
-{/* <div className="flex gap-4 w-full h-full items-center">
-<ul className="flex gap-4 text-yellow-300 font-bold text-lg lg:text-xl items-center flex-wrap py-2">
-  <li>EQUIPMENT</li>
-  <li>APPAREL</li>
-  <li>FOOTWEAR</li>
-  <li>ACCESSORIES</li>
-  <li>OUTDOOR</li>
-  <li>WELLNESS</li>
-</ul>
-</div>
-<div className="flex flex-1 items-center gap-4">
-  <div className="flex items-center justify-center bg-yellow-300 aspect-square h-[40px]"><FaSearch/></div>
-  <div className="flex items-center justify-center bg-yellow-300 aspect-square h-[40px]"><IoPerson/></div>
-  <div className="flex items-center justify-center bg-yellow-300 aspect-square h-[40px]"><FaShoppingCart/></div>
-</div> */}

@@ -3,19 +3,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?  family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&display=swap');
 
-@font-face {
-  font-family: 'floki';
-  src: url('../../public/fonts/Flokison-WyEXv.otf') format('otf'),
-}
 
-@font-face {
-  font-family: 'azonix';
-  src: url('../../public/fonts/Azonix.otf') format('otf'),
+
+@layer base {
+  ul, ol {
+    list-style: revert;
+  }
+  li{
+    margin-left: 16px;
+  }
 }
 
 body{
-  font-family: 'floki', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .container {
@@ -53,5 +55,5 @@ body{
 }
 
 .page-footer{
-  background: linear-gradient(89.7deg, rgb(0, 32, 95) 2.8%, rgb(132, 53, 142) 97.8%);
+  background-color: black;
 }

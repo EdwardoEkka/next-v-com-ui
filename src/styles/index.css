@@ -1,3 +1,4 @@
+
 .nav-container{
     max-width: 1366px;
     margin:0 auto;
@@ -19,6 +20,10 @@
 
 .aspect-hero{
     aspect-ratio: 17 / 7;
+}
+
+.fit-banner{
+    aspect-ratio: 16 / 6;
 }
 
 @media (max-width:600px)
@@ -58,9 +63,7 @@ background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
 }
 
 .train-yourself{
-    background-color: #FF3CAC;
-    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
-    
+   background-color: #0E0C0A; 
 }
 
 .t-img-0{

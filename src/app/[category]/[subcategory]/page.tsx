@@ -1,9 +1,11 @@
 "use client";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import Categories from "@/data/categories";
-import { useEffect, useState } from "react";
 import SubCategoryPage from "@/components/pages/SubCategoryPage";
+import { MainNav } from "@/components/common/nav/main-navbar";
+import Footer from "@/components/common/footer/footer";
 
 const ValidateCategory_SubCategory = (category: string, subcategory: string): boolean => {
     const categoryObj = Categories.find(cat => cat.cat === category);
@@ -27,12 +29,14 @@ const Page = () => {
        {
          router.push('/not-found');
        }
-    },[cat])
+    },[])
 
   return (
-    <div>
+    <>
+    <MainNav/>
         <SubCategoryPage cat={cat.cat} sub={cat.sub}/>
-    </div>
+    <Footer/>
+    </>
   );
 };
 

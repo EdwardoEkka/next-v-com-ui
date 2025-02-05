@@ -9,14 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/react-slick": "^0.23.13",
     "embla-carousel-react": "^8.5.1",
     "firebase": "^11.0.2",
     "framer-motion": "^11.11.17",
     "next": "14.0.4",
     "next_v_com_ui": "file:",
+    "razorpay": "^2.9.5",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^5.3.0"
+    "react-icons": "^5.3.0",
+    "react-slick": "^0.30.3",
+    "slick-carousel": "^1.8.1",
+    "uuid": "^11.0.5",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@types/node": "^20",

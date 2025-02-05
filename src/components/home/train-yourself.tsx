@@ -31,7 +31,7 @@ const TrainYourself = () => {
         ))}
       </div>
       <div className="w-full md:w-1/2 lg:w-2/3 px-0 sm:px-4 flex flex-col gap-4">
-        <h3 className="text-xl md:text-2xl text-black font-bold">ROUTINE BASED COURSE</h3>
+        <h3 className="text-xl md:text-2xl text-white font-bold">ROUTINE BASED COURSE</h3>
         <h1 className="text-3xl xs:text-5xl md:text-3xl lg:text-6xl font-black ">TAKE YOUR</h1>
         <h1 className="text-3xl xs:text-5xl md:text-3xl lg:text-6xl font-black ">TRAINING TO THE</h1>
         <h1 className="text-3xl xs:text-5xl md:text-3xl lg:text-6xl font-black ">NEXT LEVEL</h1>

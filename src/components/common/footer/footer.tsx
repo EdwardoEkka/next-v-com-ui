@@ -1,8 +1,24 @@
+"use client"
+import { useState } from "react";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { FaSquareYoutube } from "react-icons/fa6";
 import { GiMuscleUp } from "react-icons/gi";
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+
+interface ListItem {
+  title: string;
+  listItems: string[];
+}
+
+const FooterDataItems=[
+  {title:"ABOUT", listItems:["Our Blog", "Press"]},
+  {title:"TEAMS", listItems:["My Account", "Payment"]},
+  {title:"OTHERS", listItems:["Support", "Tutorial"]},
+  {title:"CONTACT", listItems:["vfit699@gmail.com", "+069 999 7378"]},
+]
+
 const Footer = () => {
   return (
     <footer className="page-footer py-8">
@@ -40,51 +56,22 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-b-2 border-gray-300 py-20">
-        <div className="container grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-6 md:gap-0 md:grid-cols-5">
+        <div className="container grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-6 md:gap-0 md:grid-cols-5">
           <div className="hidden md:flex justify-start items-start flex-col">
             <GiMuscleUp size={80} color="white" />
           </div>
-          <div>
-            <ul className="text-white flex flex-col gap-4">
-              <li className="text-lg font-bold underline underline-offset-4">
-                ABOUT
-              </li>
-              <li className="text-sm">Our Blog</li>
-              <li className="text-sm">Press</li>
-            </ul>
-          </div>
-          <div>
-            <ul className="text-white flex flex-col gap-4">
-              <li className="text-lg font-bold underline underline-offset-4">
-                TEAMS
-              </li>
-              <li className="text-sm">My Account</li>
-              <li className="text-sm">Payment</li>
-            </ul>
-          </div>
-          <div>
-            <ul className="text-white flex flex-col gap-4">
-              <li className="text-lg font-bold underline underline-offset-4">
-                OTHERS
-              </li>
-              <li className="text-sm">Support</li>
-              <li className="text-sm">Tutorial</li>
-            </ul>
-          </div>
-          <div>
-            <ul className="text-white flex flex-col gap-4">
-              <li className="text-lg font-bold underline underline-offset-4">
-                CONTACT
-              </li>
-              <li className="text-sm">vfit699@gmail.com</li>
-              <li className="text-sm">+069 999 7378</li>
-            </ul>
-          </div>
+          {
+            FooterDataItems.map((item:ListItem, index:number)=>(
+              
+                <FooterListItem FooterData={item}/>
+     
+            ))
+          }
         </div>
       </div>
       <div className="py-4 ">
         <div className="container flex flex-col items-center justify-center gap-2 sm:flex-row sm:justify-between">
-          <h3 className="text-white">
+          <h3 className="text-white text-center text-sm">
             © 2024 Wardo Ventures | All Rights Reserved
           </h3>
 
@@ -103,3 +90,63 @@ const Footer = () => {
 };
 
 export default Footer;
+
+const FooterListItemMobile = ({ FooterData }: { FooterData: ListItem }) => {
+  const [isOpen,setIsOpen]=useState<boolean>(false);
+  return (
+    <>
+    <ul className="text-white flex flex-col gap-4 xs:hidden list-none">
+      <li className="text-lg font-bold xs:underline underline-offset-4 flex items-center justify-between">
+        {FooterData.title}
+        {
+          isOpen?
+          <IoIosArrowUp className="block xs:hidden" onClick={()=>{setIsOpen(!isOpen)}}/>
+          :
+          <IoIosArrowDown className="block xs:hidden" onClick={()=>{setIsOpen(!isOpen)}}/>
+        }
+      </li>
+      {isOpen &&
+        FooterData.listItems.map((item:string, index)=>(
+          <li className="text-sm">
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+    <div className="w-full h-0.5 bg-white block xs:hidden mt-2"></div>
+    </>
+  );
+};
+
+const FooterListItemDesktop = ({ FooterData }: { FooterData: ListItem }) => {
+  return (
+    <>
+    <ul className="text-white flex flex-col gap-4 list-none">
+      <li className="text-lg font-bold underline underline-offset-4 flex items-center justify-between">
+        {FooterData.title}
+      </li>
+      {
+        FooterData.listItems.map((item:string, index)=>(
+          <li className="text-sm">
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+    <div className="w-full h-0.5 bg-white block xs:hidden mt-2"></div>
+    </>
+  );
+};
+
+const FooterListItem=({ FooterData }: { FooterData: ListItem })=>{
+  return(
+    <>
+    <div className="block xs:hidden">
+      <FooterListItemMobile FooterData={FooterData}/>
+    </div>
+    <div className="hidden xs:block">
+    <FooterListItemDesktop FooterData={FooterData}/>
+    </div>
+    </>
+  )
+}

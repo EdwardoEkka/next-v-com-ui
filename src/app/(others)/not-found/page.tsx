@@ -1,5 +1,11 @@
+import Footer from '@/components/common/footer/footer';
+import { MainNav } from '@/components/common/nav/main-navbar';
+
+
 const NotFoundPage = () => {
     return (
+      <>
+      <MainNav/>
       <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
         <div className="text-center bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
           <h1 className="text-6xl font-extrabold text-red-500 mb-4">404</h1>
@@ -15,6 +21,8 @@ const NotFoundPage = () => {
           </a>
         </div>
       </div>
+      <Footer/>
+      </>
     );
   };
   

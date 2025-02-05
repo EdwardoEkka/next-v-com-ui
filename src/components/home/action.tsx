@@ -12,7 +12,7 @@ const Action=()=>{
         <div className="my-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 container gap-y-14 xl:gay-y-0 gap-6 px-4 justify-center items-center">
             {data.map((item:any,index:number)=>(
-                <ActionCard img={item.img} name={item.name} index={index}/>
+                <ActionCard img={item.img} name={item.name} index={index} key={index}/>
             ))}
         </div>
         </div>
