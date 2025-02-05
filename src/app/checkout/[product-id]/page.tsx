@@ -46,7 +46,7 @@ const Page = () => {
   }, [productId]);
 
   return (
-    <>
+    <div>
       <MainNav />
       <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black py-6">
         <div className="container mx-auto px-4 py-10">
@@ -54,7 +54,7 @@ const Page = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 {orderProduct && (
-                  <>
+                  <div>
                     <div className="bg-gradient-to-b from-gray-900 to-gray-800 border border-white/10 p-2 sm:p-6 rounded-2xl shadow-xl text-left ">
                       <h3 className="text-2xl font-bold text-white">
                         {orderProduct.name}
@@ -99,7 +99,7 @@ const Page = () => {
                       </div>
                     </div>
                     <div></div>
-                  </>
+                  </div>
                 )}
               </div>
       
@@ -128,7 +128,7 @@ const Page = () => {
                   </h5>
                   <div className="flex mt-4 text-lg font-semibold">
                     {orderProduct?.price.discountedPrice ? (
-                      <>
+                      <div>
                         <span className="line-through text-red-500 mr-2">
                           {orderProduct?.price.currency}{" "}
                           {orderProduct?.price.price}
@@ -137,7 +137,7 @@ const Page = () => {
                           {orderProduct?.price.currency}{" "}
                           {orderProduct?.price.discountedPrice}
                         </span>
-                      </>
+                      </div>
                     ) : (
                       <span className="text-white">
                         {orderProduct?.price.currency}{" "}
@@ -210,7 +210,7 @@ const Page = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 
@@ -256,7 +256,7 @@ const PaymentOptions = ({priceAmount}:{priceAmount:number}) => {
   };
 
   return (
-    <>
+    <div>
       <button
         onClick={handlePayment}
         className="bg-[#6E07F3] text-white px-6 py-3 rounded-lg shadow-lg hover:bg-[#5406D9] transition-all"
@@ -264,7 +264,7 @@ const PaymentOptions = ({priceAmount}:{priceAmount:number}) => {
       >
         {razorpayLoaded ? "Pay with Razorpay" : "Loading Razorpay..."}
       </button>
-    </>
+    </div>
   );
 };
 

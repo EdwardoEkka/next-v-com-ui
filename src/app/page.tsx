@@ -33,7 +33,7 @@ export default function Home() {
     }
   }, []);
   return (
-    <>
+    <div>
       <MainNav />
       <main className="">
         <Hero />
@@ -45,6 +45,6 @@ export default function Home() {
         <Blog />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

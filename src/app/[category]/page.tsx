@@ -31,11 +31,11 @@ const Page = () => {
   }
 
   return (
-    <>
+    <div>
       <MainNav />
       <CategoryPage cat={category} />
       <Footer />
-    </>
+    </div>
   );
 };
 

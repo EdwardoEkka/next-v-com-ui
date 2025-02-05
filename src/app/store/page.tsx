@@ -24,7 +24,7 @@ const Page=()=>{
     },[])
 
     return(
-        <>
+        <div>
         <MainNav/>
         <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black py-4">
         <div className="container">
@@ -44,7 +44,7 @@ const Page=()=>{
         </div>
         </div>
         <Footer/>
-        </>
+        </div>
     )
 }
 

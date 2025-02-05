@@ -41,11 +41,11 @@ const Page = () => {
   }, [pathname, router]); // Include dependencies
 
   return (
-    <>
+    <div>
     <MainNav/>
       <ProductPage productId={productId}/>
     <Footer/>
-    </>
+    </div>
   );
 };
 

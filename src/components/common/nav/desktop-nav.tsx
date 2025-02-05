@@ -67,10 +67,10 @@ export function DesktopNav() {
         </div>
       </div>
       {isCatMenuOpen && (
-        <>
+        <div>
           <div className="h-screen fixed w-64 bg-gradient-to-b from-black to-transparent text-white left-0 top-0 p-6">
             {isCatSelected ? (
-              <>
+              <div>
                 <div className="pl-4 pb-6 flex gap-2 items-center">
                   <div
                     key={3}
@@ -93,7 +93,7 @@ export function DesktopNav() {
                     {Categories[selectedCategory].cat}
                   </li>
                   {Categories[selectedCategory].sub.map((subcat, index) => (
-                    <>
+                    <div>
                       <li
                         className="cursor-pointer  uppercase py-2 flex "
                         onClick={() => {
@@ -106,12 +106,12 @@ export function DesktopNav() {
                       >
                         {subcat}
                       </li>
-                    </>
+                    </div>
                   ))}
                 </ul>
-              </>
+              </div>
             ) : (
-              <>
+              <div>
                 <div className="pl-4 pb-6 flex gap-2 items-center">
                   <div
                     key={3}
@@ -135,10 +135,10 @@ export function DesktopNav() {
                     </li>
                   ))}
                 </ul>
-              </>
+              </div>
             )}
           </div>
-        </>
+        </div>
       )}
     </nav>
   );

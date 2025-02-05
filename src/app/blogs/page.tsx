@@ -19,7 +19,7 @@ const BlogPage = () => {
   }, [currentBlog]);
 
   return (
-    <>
+    <div>
     <div ref={containerRef}></div>
     <MainNav />
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black py-6">
@@ -52,7 +52,7 @@ const BlogPage = () => {
     </div>
     </div>
     <Footer/>
-    </>
+    </div>
   );
 };
 

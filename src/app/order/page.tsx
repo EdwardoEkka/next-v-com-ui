@@ -6,11 +6,11 @@ import withAuth from "../auth/withAuth"
 
 const OrderPage=()=>{
     return(
-        <>
+        <div>
         <MainNav/>
 
         <Footer/>
-        </>
+        </div>
     )
 }
 

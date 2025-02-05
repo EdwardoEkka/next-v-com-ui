@@ -94,7 +94,7 @@ export default Footer;
 const FooterListItemMobile = ({ FooterData }: { FooterData: ListItem }) => {
   const [isOpen,setIsOpen]=useState<boolean>(false);
   return (
-    <>
+    <div>
     <ul className="text-white flex flex-col gap-4 xs:hidden list-none">
       <li className="text-lg font-bold xs:underline underline-offset-4 flex items-center justify-between">
         {FooterData.title}
@@ -114,13 +114,13 @@ const FooterListItemMobile = ({ FooterData }: { FooterData: ListItem }) => {
       }
     </ul>
     <div className="w-full h-0.5 bg-white block xs:hidden mt-2"></div>
-    </>
+    </div>
   );
 };
 
 const FooterListItemDesktop = ({ FooterData }: { FooterData: ListItem }) => {
   return (
-    <>
+    <div>
     <ul className="text-white flex flex-col gap-4 list-none">
       <li className="text-lg font-bold underline underline-offset-4 flex items-center justify-between">
         {FooterData.title}
@@ -134,19 +134,19 @@ const FooterListItemDesktop = ({ FooterData }: { FooterData: ListItem }) => {
       }
     </ul>
     <div className="w-full h-0.5 bg-white block xs:hidden mt-2"></div>
-    </>
+    </div>
   );
 };
 
 const FooterListItem=({ FooterData }: { FooterData: ListItem })=>{
   return(
-    <>
+    <div>
     <div className="block xs:hidden">
       <FooterListItemMobile FooterData={FooterData}/>
     </div>
     <div className="hidden xs:block">
     <FooterListItemDesktop FooterData={FooterData}/>
     </div>
-    </>
+    </div>
   )
 }

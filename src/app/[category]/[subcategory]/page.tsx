@@ -32,11 +32,11 @@ const Page = () => {
     },[])
 
   return (
-    <>
+    <div>
     <MainNav/>
         <SubCategoryPage cat={cat.cat} sub={cat.sub}/>
     <Footer/>
-    </>
+    </div>
   );
 };
 

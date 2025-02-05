@@ -4,7 +4,7 @@ import { MainNav } from '@/components/common/nav/main-navbar';
 
 const NotFoundPage = () => {
     return (
-      <>
+      <div>
       <MainNav/>
       <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
         <div className="text-center bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
@@ -22,7 +22,7 @@ const NotFoundPage = () => {
         </div>
       </div>
       <Footer/>
-      </>
+      </div>
     );
   };
   

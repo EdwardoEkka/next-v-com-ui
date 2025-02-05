@@ -32,7 +32,7 @@ const Page = () => {
   }, [userId]);
 
   return (
-    <>
+    <div>
       <MainNav />
       <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black py-10 px-0 sm:px-4">
         <div className="container">
@@ -44,7 +44,7 @@ const Page = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

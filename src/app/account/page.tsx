@@ -9,7 +9,7 @@ const App = () => {
   const { user, setUser } = useUserStore();
 
   return (
-    <>
+    <div>
       <MainNav />
       <div className="min-h-screen flex flex-col items-center justify-center min-h-[70vh] px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black via-gray-900 to-black">
         <div className="relative w-full max-w-md bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl rounded-2xl p-8 space-y-6 border border-gray-700/80 backdrop-blur-md">
@@ -47,7 +47,7 @@ const App = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 
