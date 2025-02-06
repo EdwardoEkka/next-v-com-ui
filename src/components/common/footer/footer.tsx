@@ -63,7 +63,7 @@ const Footer = () => {
           {
             FooterDataItems.map((item:ListItem, index:number)=>(
               
-                <FooterListItem FooterData={item}/>
+                <FooterListItem FooterData={item} key={index}/>
      
             ))
           }
@@ -96,7 +96,7 @@ const FooterListItemMobile = ({ FooterData }: { FooterData: ListItem }) => {
   return (
     <div>
     <ul className="text-white flex flex-col gap-4 xs:hidden list-none">
-      <li className="text-lg font-bold xs:underline underline-offset-4 flex items-center justify-between">
+      <li className="text-lg font-bold xs:underline underline-offset-4 flex items-center justify-between" key="footer-title">
         {FooterData.title}
         {
           isOpen?
@@ -107,7 +107,7 @@ const FooterListItemMobile = ({ FooterData }: { FooterData: ListItem }) => {
       </li>
       {isOpen &&
         FooterData.listItems.map((item:string, index)=>(
-          <li className="text-sm">
+          <li className="text-sm" key={index}>
             {item}
           </li>
         ))
@@ -122,12 +122,12 @@ const FooterListItemDesktop = ({ FooterData }: { FooterData: ListItem }) => {
   return (
     <div>
     <ul className="text-white flex flex-col gap-4 list-none">
-      <li className="text-lg font-bold underline underline-offset-4 flex items-center justify-between">
+      <li className="text-lg font-bold underline underline-offset-4 flex items-center justify-between" key="title">
         {FooterData.title}
       </li>
       {
         FooterData.listItems.map((item:string, index)=>(
-          <li className="text-sm">
+          <li className="text-sm" key={index}>
             {item}
           </li>
         ))
@@ -142,10 +142,10 @@ const FooterListItem=({ FooterData }: { FooterData: ListItem })=>{
   return(
     <div>
     <div className="block xs:hidden">
-      <FooterListItemMobile FooterData={FooterData}/>
+      <FooterListItemMobile FooterData={FooterData} key="footer-item-mobile"/>
     </div>
     <div className="hidden xs:block">
-    <FooterListItemDesktop FooterData={FooterData}/>
+    <FooterListItemDesktop FooterData={FooterData} key="footer-item-desktop"/>
     </div>
     </div>
   )
