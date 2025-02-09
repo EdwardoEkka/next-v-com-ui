@@ -67,7 +67,7 @@ export function DesktopNav() {
         </div>
       </div>
       {isCatMenuOpen && (
-        <div>
+
           <div className="h-screen fixed w-64 bg-gradient-to-b from-black to-transparent text-white left-0 top-0 p-6">
             {isCatSelected ? (
               <div>
@@ -138,7 +138,6 @@ export function DesktopNav() {
               </div>
             )}
           </div>
-        </div>
       )}
     </nav>
   );
