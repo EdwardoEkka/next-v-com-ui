@@ -28,7 +28,7 @@ const HeroComponent1 = () => {
       />
       <div className="absolute inset-0 flex z-10">
         <div className="relative w-full h-full">
-          <div className="h-full p-4  absolute right-0 top-0 text-3xl sm:text-4xl md:text-5xl xl:text-6xl bg-[#C3E235] hidden sm:flex flex-col justify-between">
+          <div className="h-full p-4  absolute right-0 top-0 text-3xl sm:text-4xl md:text-5xl xl:text-6xl motive hidden sm:flex flex-col justify-between">
             <h1 className=" font-black leading-tight">DISCIPLINE</h1>
             <h1 className="font-black leading-tight">STRENGTH</h1>
             <h1 className="font-black leading-tight">WELLNESS</h1>
