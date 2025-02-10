@@ -13,6 +13,7 @@ const Page = () => {
   const { user } = useUserStore();
   const [userId, setUserId] = useState<any>(null);
   const [cart, setCart] = useState<Cart[]>([]);
+  const [trigger, setTrigger] = useState(false); // Trigger for re-fetching
 
   useEffect(() => {
     setUserId(user?.uid);
@@ -21,15 +22,17 @@ const Page = () => {
   useEffect(() => {
     const GetProd = async () => {
       try {
-        const prod = await getUserCart(userId);
-        setCart(prod);
+        if (userId) {
+          const prod = await getUserCart(userId);
+          setCart(prod);
+        }
       } catch (error) {
         console.error(error);
       }
     };
 
     GetProd();
-  }, [userId]);
+  }, [userId, trigger]); // Depend on `trigger` to refresh after removal
 
   return (
     <div>
@@ -37,8 +40,14 @@ const Page = () => {
       <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black py-10 px-0 sm:px-4">
         <div className="container">
           <div className="w-full grid grid-col-1 md:grid-cols-2 py-6 gap-4">
-            {cart.map((cart, index) => (
-              <ProductInCart productId={cart.productId} cartId={cart.id} />
+            {cart.map((cartItem) => (
+              <ProductInCart
+                key={cartItem.id}
+                productId={cartItem.productId}
+                cartId={cartItem.id}
+                setCart={setCart} // Pass setCart to update locally
+                setTrigger={setTrigger} // Pass setTrigger for re-fetching
+              />
             ))}
           </div>
         </div>
@@ -53,9 +62,13 @@ export default withAuth(Page);
 const ProductInCart = ({
   productId,
   cartId,
+  setCart,
+  setTrigger,
 }: {
   productId: string;
   cartId: string;
+  setCart: React.Dispatch<React.SetStateAction<Cart[]>>;
+  setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const [prod, setProd] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
@@ -73,7 +86,7 @@ const ProductInCart = ({
       }
     };
     getProduct();
-  }, []);
+  }, [productId]);
 
   if (loading) return null; // Avoid showing incomplete content
 
@@ -100,7 +113,11 @@ const ProductInCart = ({
             Buy Now
           </button>
           <button
-            onClick={async () => await removeFromCart(cartId)}
+            onClick={async () => {
+              await removeFromCart(cartId);
+              setCart((prev) => prev.filter((item) => item.id !== cartId)); // Remove from UI
+              setTrigger((prev) => !prev); // Trigger re-fetch
+            }}
             className="px-4 py-2 text-sm font-medium text-white bg-red-600/80 backdrop-blur-md rounded-md hover:bg-red-700 transition-all duration-200"
           >
             Remove

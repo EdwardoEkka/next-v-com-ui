@@ -2,15 +2,13 @@
 import { useState } from "react";
 import { signIn } from "@/service";
 import { useRouter } from "next/navigation";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-
-
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +16,15 @@ const SignIn: React.FC = () => {
       const userData = await signIn(email, password);
       router.push("/account");
     } catch (err: any) {
-      setError(err.message || "Something went wrong. Please try again.");
+      toast.error(err.message || "Something went wrong. Please try again.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+      });
     }
   };
 
@@ -81,12 +87,10 @@ const SignIn: React.FC = () => {
         >
           Sign In
         </button>
-
-        {/* Error Message */}
-        {error && (
-          <p className="mt-4 text-center text-red-400 text-sm">{error}</p>
-        )}
       </form>
+
+      {/* Toast Container */}
+      <ToastContainer />
     </div>
   );
 };

@@ -1,20 +1,37 @@
 "use client";
 import React, { useState } from "react";
 import { signUp } from "@/service";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [error, setError] = useState<string | null>(null);
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await signUp(email, password, username);
-      alert("Sign-up successful!");
+      toast.success("Sign-up successful!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+      });
     } catch (err: any) {
-      setError(err.message);
+      toast.error(err.message || "Something went wrong. Please try again.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+      });
     }
   };
 
@@ -67,12 +84,10 @@ const SignUp: React.FC = () => {
         >
           Sign Up
         </button>
-
-        {/* Error Message */}
-        {error && (
-          <p className="mt-4 text-center text-red-400 text-sm">{error}</p>
-        )}
       </form>
+
+      {/* Toast Container */}
+      <ToastContainer />
     </div>
   );
 };
