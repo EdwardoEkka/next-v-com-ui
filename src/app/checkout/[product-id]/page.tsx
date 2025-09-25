@@ -237,7 +237,7 @@ const PaymentOptions = ({priceAmount}:{priceAmount:number}) => {
       key: "rzp_test_AAFgc8dQHevvPW",
       amount: {priceAmount},
       currency: "INR",
-      name: "Your Company",
+      name: "SG SUMMIT",
       description: "Payment for Order #1234",
       image: "/logo.png", 
       handler: (response: any) => {
